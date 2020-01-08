@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
     [Header("攝影機移動速度"), Range(1, 10)]
     public float speed = 2f;
     [Header("上方限制")]
-    public float top = 5.8f;
+    public float top =5.8f;
     [Header("下方限制")]
     public float below = -2f;
 

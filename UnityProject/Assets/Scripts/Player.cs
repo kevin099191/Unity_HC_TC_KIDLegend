@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Animator ani;
     private Transform target;
 
+    private LevelManager levelManager;
 
 
 
@@ -40,6 +41,21 @@ public class Player : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "傳送區域")
+        {
+            StartCoroutine(levelManager.NextLevel());
+        }
+
+
+
+
+    }
+
+
+
+
 
     private void FixedUpdate()
     {
@@ -60,7 +76,8 @@ public class Player : MonoBehaviour
         //target = GameObject.Find("目標").GetComponent<Transform>();
         target = GameObject.Find("目標").transform;
 
-        
+
+        levelManager = FindObjectOfType<LevelManager>();
 
 
     }
