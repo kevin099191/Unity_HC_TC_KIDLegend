@@ -13,11 +13,15 @@ public class EnemyData : ScriptableObject
     public float cd;
     [Header("移動速度"), Range(0, 1000)]
     public float speed;
-    [Header("停止速度"), Range(0, 1000)]
+    [Header("停止距離"), Range(0, 1000)]
     public float stopdistance;
 
-
-
+    [Header("攻擊距離"), Range(0, 1000)]
+    public float nearAttackLength;
+    [Header("攻擊方向")]
+    public Vector3 nearAttackpos;
+    [Header("攻擊延遲"), Range(0, 3)]
+    public float AttackDelay;
 
 
 

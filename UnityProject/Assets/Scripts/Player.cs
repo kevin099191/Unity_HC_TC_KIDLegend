@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     public float speed=25;
     private Animator ani;
     private Transform target;
-
+    public PlayerData data;
     private LevelManager levelManager;
-
+    private HpDamageManager hpdamageManager;
 
 
     private void Move()
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
 
         levelManager = FindObjectOfType<LevelManager>();
-
+        hpdamageManager = GetComponentInChildren<HpDamageManager>();
 
     }
 

@@ -31,6 +31,10 @@ public class Enemy : MonoBehaviour
         /// nma.SetDestination(T_bone.position);
         nma.SetDestination(bone.transform.position);
 
+        Vector3 targetPos = bone.transform.position;
+        targetPos.y = transform.position.y;
+        transform.LookAt(targetPos);
+
         if (nma.remainingDistance < nma.stoppingDistance)
         {
             Wait();
@@ -58,7 +62,7 @@ public class Enemy : MonoBehaviour
 
 
 
-    private void Attack()
+    protected virtual void Attack()
     {
         timer = 0;
         ani.SetTrigger("攻擊觸發");
