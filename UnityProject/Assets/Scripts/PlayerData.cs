@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("血量"), Range(200, 3000)]
-    public int Hp = 200;
-    public int HpMax;
+    public float Hp = 200;
+    public float HpMax;
 
 
 

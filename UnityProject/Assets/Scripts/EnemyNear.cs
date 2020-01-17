@@ -29,7 +29,7 @@ public class EnemyNear : Enemy
 
         if (Physics.Raycast(transform.position + data.nearAttackpos, transform.forward ,out hit,data.nearAttackLength))
         {
-            print("打到的物件" + hit.collider.name);
+            hit.collider.GetComponent<Player>().Hit(data.attack);
         }
 
 
@@ -40,13 +40,7 @@ public class EnemyNear : Enemy
 
 
 
-
-
-
-
-
-
-
+    
 
 
 

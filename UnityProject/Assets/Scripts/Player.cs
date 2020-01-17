@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     private Joystick joystick;
     private Rigidbody rig;
-    public float speed=25;
+    public float speed=40;
     private Animator ani;
     private Transform target;
     public PlayerData data;
@@ -52,6 +52,28 @@ public class Player : MonoBehaviour
 
 
     }
+
+      public void Hit(float damage)
+    {
+        data.Hp -= damage;
+        hpdamageManager.UpdateHpbar(data.Hp , data.HpMax);
+
+        StartCoroutine(hpdamageManager.ShowValue(damage, "-", Vector3.one, Color.red));
+
+        if (data.Hp <= 0) Dead();
+        
+
+    }
+
+    private void Dead()
+    {
+        ani.SetBool("死亡開關", true);
+        this.enabled = false;
+    
+    }
+
+
+
 
 
 

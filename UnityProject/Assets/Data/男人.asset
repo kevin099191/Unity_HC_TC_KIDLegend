@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 500
   attack: 50
-  cd: 1.3
+  cd: 1.5
   speed: 2.5
   stopdistance: 2
   nearAttackLength: 1.8
