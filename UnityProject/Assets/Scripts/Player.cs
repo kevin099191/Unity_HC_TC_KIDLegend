@@ -69,7 +69,8 @@ public class Player : MonoBehaviour
     {
         ani.SetBool("死亡開關", true);
         this.enabled = false;
-    
+
+        StartCoroutine(levelManager.ShowRevival());
     }
 
 

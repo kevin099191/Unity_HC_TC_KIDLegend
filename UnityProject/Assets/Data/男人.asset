@@ -20,3 +20,4 @@ MonoBehaviour:
   nearAttackLength: 1.8
   nearAttackpos: {x: 0, y: 0.7, z: 0}
   AttackDelay: 0.3
+  FarPower: 0

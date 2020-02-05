@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public bool autoOpendoor;
 
     private Image imgCross;
-
+    public GameObject PanelRevival;
 
 
     private void Start()
@@ -68,6 +68,27 @@ public class LevelManager : MonoBehaviour
         async.allowSceneActivation = true;
 
     }
+
+
+    public IEnumerator ShowRevival()
+    {
+        PanelRevival.SetActive(true); 
+
+        for (int i = 3; i >0; i--)
+        {
+           
+            PanelRevival.transform.GetChild(1).GetComponent<Text>().text = i.ToString();
+            yield return new WaitForSeconds(1);
+        }
+        
+
+
+
+
+    }
+
+
+
 
 
 
