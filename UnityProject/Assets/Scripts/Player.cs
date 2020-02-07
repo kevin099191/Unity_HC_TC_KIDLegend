@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     public PlayerData data;
     private LevelManager levelManager;
     private HpDamageManager hpdamageManager;
-
+    public GameObject bullet;
+    private float timer;
 
     private void Move()
     {
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         transform.LookAt(postarget);
 
 
-
+        if (v == 0 && h == 0) Attack();
 
 
     }
@@ -73,14 +74,43 @@ public class Player : MonoBehaviour
         StartCoroutine(levelManager.ShowRevival());
     }
 
+    public void Revival()
+    {
+        this.enabled = true;
+        ani.SetBool("死亡開關", false);
+        data.Hp = data.HpMax;
+        hpdamageManager.UpdateHpbar(data.Hp, data.HpMax);
+        levelManager.CloseRevival();
+    }
+
+    private void Attack()
+    {
+        if (timer<data.cd)
+        {
+            timer += Time.deltaTime;
+
+        }
+
+        else
+        {
+            timer = 0;    
+
+            Vector3 pos = transform.position + transform.up * 2f + transform.forward * 1.1f;
+
+            GameObject temp = Instantiate(bullet, pos, transform.rotation);
+
+            temp.GetComponent<Rigidbody>().AddForce(transform.forward * data.power);
+
+        }
 
 
 
 
 
+    }
 
 
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
         Move();
     }
