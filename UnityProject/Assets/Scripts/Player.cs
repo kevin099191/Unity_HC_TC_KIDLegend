@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Player : MonoBehaviour
     private HpDamageManager hpdamageManager;
     public GameObject bullet;
     private float timer;
+    private Enemy[] enemys;
+    private float[] enemysDistance;
+
+
+
 
     private void Move()
     {
@@ -93,14 +99,40 @@ public class Player : MonoBehaviour
 
         else
         {
-            timer = 0;    
+            enemys = FindObjectsOfType<Enemy>();
+            enemysDistance = new float[enemys.Length];
+
+            if (enemys.Length == 0) return;
+             
+
+         
+            timer = 0;
+            ani.SetTrigger("攻擊觸發");
+            
+            for (int i = 0; i < enemys.Length; i++)
+            {
+                enemysDistance[i] = Vector3.Distance(transform.position, enemys[i].transform.position);
+            }
+
+            float min = enemysDistance.Min();
+
+            int index = enemysDistance.ToList().IndexOf(min);
+
+            Vector3 posEnemy = enemys[index].transform.position;
+            posEnemy.y = transform.position.y;
+            transform.LookAt(posEnemy);
+
+
+
 
             Vector3 pos = transform.position + transform.up * 2f + transform.forward * 1.1f;
 
             GameObject temp = Instantiate(bullet, pos, transform.rotation);
 
             temp.GetComponent<Rigidbody>().AddForce(transform.forward * data.power);
-
+            temp.AddComponent<Bullet>();
+            temp.GetComponent<Bullet>().damage = data.Attack;
+            temp.GetComponent<Bullet>().playerBullet = true;
         }
 
 

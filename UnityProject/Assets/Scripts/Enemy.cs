@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     ///private Transform T_bone;
     private GameObject bone;
     private float timer;
+    private HpDamageManager hpdamageManager;
+    private float hp;
+
+
 
     private void Start()
     {
@@ -21,13 +25,14 @@ public class Enemy : MonoBehaviour
         bone = GameObject.Find("骨頭");
         nma.speed = data.speed;
         nma.stoppingDistance = data.stopdistance;
-
-
-
+        hp = data.Hp;
+        hpdamageManager = GetComponentInChildren<HpDamageManager>();
+        
     }
 
     private void Move()
     {
+        if (ani.GetBool("死亡開關")) return;
         /// nma.SetDestination(T_bone.position);
         nma.SetDestination(bone.transform.position);
 
@@ -70,14 +75,22 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void Hit(float damage)
+    public void Hit(float damage)
     {
+        hp -= damage;
+        hpdamageManager.UpdateHpbar(hp, data.HpMax);
+
+        StartCoroutine(hpdamageManager.ShowValue(damage, "-", Vector3.one, Color.red));
+
+        if (hp <= 0) Dead();
 
     }
 
     private void Dead()
     {
-
+        ani.SetBool("死亡開關", true);
+        nma.isStopped = true;
+        Destroy(this);
     }
 
     private void Drop()
