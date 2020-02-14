@@ -102,8 +102,12 @@ public class Player : MonoBehaviour
             enemys = FindObjectsOfType<Enemy>();
             enemysDistance = new float[enemys.Length];
 
-            if (enemys.Length == 0) return;
-             
+            if (enemys.Length == 0)
+            {
+                levelManager.Pass();
+
+                return;
+            }
 
          
             timer = 0;

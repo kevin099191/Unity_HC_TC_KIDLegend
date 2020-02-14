@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     private Image imgCross;
     public GameObject PanelRevival;
-
+    
 
     private void Start()
     {
@@ -96,6 +96,21 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    public void Pass()
+    {
+        OpenDoor();
 
+        Item[] coins = FindObjectsOfType<Item>();
+
+        for (int i = 0; i < coins.Length; i++)
+        {
+            coins[i].pass = true; 
+        }
+
+
+
+
+
+    }
 
 }

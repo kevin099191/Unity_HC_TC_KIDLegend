@@ -26,7 +26,7 @@ public class EnemyData : ScriptableObject
     [Header("遠程攻擊速度"), Range(0, 5000)]
     public float FarPower;
 
-
+    public Vector2 coinRandom;
 
 
 

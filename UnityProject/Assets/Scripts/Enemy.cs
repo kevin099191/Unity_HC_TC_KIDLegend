@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private float timer;
     private HpDamageManager hpdamageManager;
     private float hp;
-
+    public GameObject coin;
 
 
     private void Start()
@@ -91,10 +91,19 @@ public class Enemy : MonoBehaviour
         ani.SetBool("死亡開關", true);
         nma.isStopped = true;
         Destroy(this);
+        Destroy(gameObject, 1.3f);
+        Drop();
     }
 
     private void Drop()
     {
+        int r = (int)Random.Range(data.coinRandom.x, data.coinRandom.y);
+
+        for (int i = 0; i < r; i++)
+        {
+            Instantiate(coin, transform.position + transform.up * 0.2f, Quaternion.identity);
+        }
+        
 
     }
 
