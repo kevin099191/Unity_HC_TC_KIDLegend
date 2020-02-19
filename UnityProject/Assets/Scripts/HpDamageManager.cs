@@ -40,19 +40,19 @@ public class HpDamageManager : MonoBehaviour
 
     public IEnumerator ShowValue(float value , string mark , Vector3 size , Color Valuecolor)
     {
+        rtValue.anchoredPosition = new Vector2(0, 30);
         textValue.text = mark + value;
         Valuecolor.a = 0;
         textValue.color = Valuecolor;
         rtValue.localScale = size;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 30; i++)
         {
-            textValue.color += new Color(0, 0, 0, 0.1f);
-            rtValue.anchoredPosition += Vector2.up*6;
-            yield return new WaitForSeconds(0.01f);
+            textValue.color += new Color(0, 0, 0, 0.03f);
+            rtValue.anchoredPosition += Vector2.up*3;
+            yield return new WaitForSeconds(0.005f);
 
         }
-        rtValue.anchoredPosition = new Vector2(0, 100);
         textValue.color = new Color(0, 0, 0, 0);
 
     }

@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private Joystick joystick;
     private Rigidbody rig;
-    public float speed=40;
+    public float speed=30;
     private Animator ani;
     private Transform target;
     public PlayerData data;

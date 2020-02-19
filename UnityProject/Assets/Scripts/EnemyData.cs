@@ -5,7 +5,7 @@
 [CreateAssetMenu(fileName ="怪物名稱",menuName ="Ray/怪物")]
 public class EnemyData : ScriptableObject
 {
-    [Header("血量"), Range(10, 3000)]
+    [Header("血量"), Range(10, 10000)]
     public float Hp;
     public float HpMax;
     [Header("攻擊"), Range(0, 1000)]

@@ -52,9 +52,20 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator NextLevel()
     {
-        AsyncOperation async = SceneManager.LoadSceneAsync("關卡2");
+        AsyncOperation async;
+        if (SceneManager.GetActiveScene().name.Contains("魔王"))
+        {
+            async = SceneManager.LoadSceneAsync("0");
+        }
 
-        async.allowSceneActivation = false;
+        else
+        {
+            int index = SceneManager.GetActiveScene().buildIndex;
+            async = SceneManager.LoadSceneAsync("++index");
+        }
+        
+
+          async.allowSceneActivation = false;
 
 
 

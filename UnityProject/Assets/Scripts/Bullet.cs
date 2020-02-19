@@ -15,14 +15,16 @@ public class Bullet : MonoBehaviour
             if (other.name == "骨頭")
             {
                 other.GetComponent<Player>().Hit(damage);
+                Destroy(gameObject);
             }
         }
         else
         {
           if (other.GetComponent<Enemy>() && other.tag == "敵人")
           {
-            other.GetComponent<Enemy>().Hit(damage);
-        }
+             other.GetComponent<Enemy>().Hit(damage);
+              Destroy(gameObject);
+          }
 
         }
     }
