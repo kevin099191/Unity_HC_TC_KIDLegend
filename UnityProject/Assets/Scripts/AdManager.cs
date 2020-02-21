@@ -10,7 +10,7 @@ public class AdManager : MonoBehaviour,IUnityAdsListener
 
     private void Start()
     {
-        Advertisement.Initialize(GooglePlay, true);
+        Advertisement.Initialize(GooglePlay, false);
         Advertisement.AddListener(this);
         player = FindObjectOfType<Player>();
     }

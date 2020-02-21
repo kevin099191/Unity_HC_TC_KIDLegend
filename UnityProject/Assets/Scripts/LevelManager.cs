@@ -55,13 +55,13 @@ public class LevelManager : MonoBehaviour
         AsyncOperation async;
         if (SceneManager.GetActiveScene().name.Contains("魔王"))
         {
-            async = SceneManager.LoadSceneAsync("0");
+            async = SceneManager.LoadSceneAsync(0);
         }
 
         else
         {
             int index = SceneManager.GetActiveScene().buildIndex;
-            async = SceneManager.LoadSceneAsync("++index");
+            async = SceneManager.LoadSceneAsync(++index);
         }
         
 
